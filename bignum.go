@@ -1,7 +1,5 @@
 package openssl
 
-import "C"
-
 // #include <openssl/bn.h>
 // #include <shim.h>
 import "C"

@@ -32,8 +32,6 @@ func loadDefaultProvider() {
 }
 
 func LoadFIPSProvider() error {
-	oldDefaultCtx := defaultCtx
-	oldDefaultCtx.finalise()
 	return loadFIPSProvider()
 }
 
