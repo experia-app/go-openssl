@@ -1,4 +1,4 @@
-module github.com/experia-app/go-openssl
+module github.com/experia-app/openssl
 
 require (
 	github.com/hashicorp/go-multierror v1.1.1
