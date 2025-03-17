@@ -30,6 +30,26 @@ func loadDefaultProvider() {
 	runtime.SetFinalizer(defaultCtx, func(c *LibraryContext) { c.finalise() })
 }
 
+func LoadFIPSProvider() error {
+	oldDefaultCtx := defaultCtx
+	oldDefaultCtx.finalize()
+	return loadFIPSProvider()
+}
+
+func loadFIPSProvider() error {
+	defaultCtx = &LibraryContext{
+		ctx: nil, providers: make(map[string]*C.OSSL_PROVIDER), mu: &sync.Mutex{},
+	}
+	runtime.SetFinalizer(defaultCtx, func(c *LibraryContext) { c.finalise() })
+	if err := defaultCtx.LoadProvider("fips"); err != nil {
+		return fmt.Errorf("failed to load fips provider: %w", err)
+	}
+	if err := defaultCtx.LoadProvider("base"); err != nil {
+		return fmt.Errorf("failed to load base provider: %w", err)
+	}
+	return nil
+}
+
 func (c *LibraryContext) LoadProvider(name string) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
