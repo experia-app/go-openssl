@@ -26,7 +26,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/experia-app/openssl/utils"
+	"github.com/experia-app/go-openssl/utils"
 	"github.com/mattn/go-pointer"
 )
 
