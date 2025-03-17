@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pexip/go-openssl/utils"
+	"github.com/experia-app/go-openssl/utils"
 )
 
 var (

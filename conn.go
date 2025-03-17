@@ -26,8 +26,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/experia-app/go-openssl/utils"
 	"github.com/mattn/go-pointer"
-	"github.com/pexip/go-openssl/utils"
 )
 
 var (

@@ -5,6 +5,7 @@ package openssl
 import "C"
 import (
 	"errors"
+	"fmt"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -32,7 +33,7 @@ func loadDefaultProvider() {
 
 func LoadFIPSProvider() error {
 	oldDefaultCtx := defaultCtx
-	oldDefaultCtx.finalize()
+	oldDefaultCtx.finalise()
 	return loadFIPSProvider()
 }
 
