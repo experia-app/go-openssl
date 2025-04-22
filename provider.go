@@ -40,8 +40,11 @@ func loadFIPSProvider() error {
 		ctx: nil, providers: make(map[string]*C.OSSL_PROVIDER), mu: &sync.Mutex{},
 	}
 	runtime.SetFinalizer(defaultCtx, func(c *LibraryContext) { c.finalise() })
-	if err := defaultCtx.LoadProvider("fips"); err != nil {
-		return fmt.Errorf("failed to load fips provider: %w", err)
+	// if err := defaultCtx.LoadProvider("fips"); err != nil {
+	// 	return fmt.Errorf("failed to load fips provider: %w", err)
+	// }
+	if err := defaultCtx.LoadProvider("default"); err != nil {
+		return fmt.Errorf("failed to load default provider: %w", err)
 	}
 	if err := defaultCtx.LoadProvider("base"); err != nil {
 		return fmt.Errorf("failed to load base provider: %w", err)

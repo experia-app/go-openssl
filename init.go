@@ -106,7 +106,9 @@ func init() {
 		panic(fmt.Errorf("x_shim_init failed with %d", rc))
 	}
 	//loadDefaultProvider()
-	LoadFIPSProvider()
+	if err := LoadFIPSProvider(); err != nil {
+		panic(err)
+	}
 }
 
 func getOneErrorFromQueue() error {
